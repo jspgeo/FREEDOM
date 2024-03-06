@@ -288,7 +288,7 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 0,
-        "antiair": False]
+        "antiair": False]}
 
 # def Fight(Country1, Country2):
 
