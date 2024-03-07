@@ -278,6 +278,26 @@ SPA = {"manpower_max": 25000000,
         "fighters": 0,
         "antiair": False}
 
+DUT = {"manpower_max": 80000000,
+        "stability": 50,
+        "conscription_law": 1,
+        "civilian_factories": 6,
+        "military_factories": 4,
+        "port_guards": True,
+        "support": 500,
+        "artillery": 500,
+        "infantry": 10000,
+        "light_tank": 0,
+        "medium_tank": 0,
+        "heavy_tank": 0,
+        "fighters": 100,
+        "antiair": False}
+
+BLANK = NOCOUNTRY
+
+Countries = {"Player1": BLANK,
+             "Player2": DUT}
+
 print(r'''
             
             
@@ -298,8 +318,9 @@ print(r'''
             
             
         ''')
-
-Countryselected = input('''
+AskforCountry = True
+while AskforCountry == True:
+    Countryselected = input(f'''
                   Insert Name Here                        
 -----------------------------------------------------
             name of people who helped idk                        
@@ -313,31 +334,47 @@ Countryselected = input('''
 |                  +                +               |
 |---------------------------------------------------|
 |   + Mexico       + Poland         + Switzerland   |
-|   + Brazil       + Spain          + India         |
------------------------------------------------------   
+|   + Brazil       + Spain          + India         |  
+|---------------------------------------------------|
+|   + Player 1: Countries{Player1}                  |
+|   + Player 2: Countries{Player2}                  |
+-----------------------------------------------------                          
 Write the country name to play that country. Ex. Player1.USA for player 1 to play with the USA.  
-                        
-Write "Info.{country}" for info about the specific nation.   
-
-Thanks for playing!                                                ''')
-if Player1 in Countryselected:
-    
-if Countryselected = str(USA)
-    userCountry = Countryselected 
+Write "Info.country" for info about the specific nation.                                                 ''')
+    def FRA(), GER(), SOV(), ENG(), USA(), ITA(), JAP(), CHI(), POL(), IND(), MEX(), BRA(), SWI(), SPA(), DUT():
+        OtherPlayer = DUT
+        if str(Player1) in Countryselected:
+            if str(Countryselected) - str(Player1) = str(FRA) or str(GER) or str(SOV) or str(ENG) or str(USA) or str(ITA) or str(JAP) or str(CHI) or str(POL) or str(IND) or str(MEX) or str(BRA) or str(SWI) or str(SPA)
+                Countries{Player1} = str(Countryselected) - str(Player1)
+        elif str(Player2) in Countryselected:
+            if str(Countryselected) - str(Player1) = str(FRA) or str(GER) or str(SOV) or str(ENG) or str(USA) or str(ITA) or str(JAP) or str(CHI) or str(POL) or str(IND) or str(MEX) or str(BRA) or str(SWI) or str(SPA)
+                Countries{Player1} = str(Countryselected) - str(Player2)
+        elif Countryselected = str(FRA) or str(GER) or str(SOV) or str(ENG) or str(USA) or str(ITA) or str(JAP) or str(CHI) or str(POL) or str(IND) or str(MEX) or str(BRA) or str(SWI) or str(SPA):
+            if str(Countryselected) - str(Player1) = str(FRA) or str(GER) or str(SOV) or str(ENG) or str(USA) or str(ITA) or str(JAP) or str(CHI) or str(POL) or str(IND) or str(MEX) or str(BRA) or str(SWI) or str(SPA)
+                Countries{Player1} = str(Countryselected) - str(Player1)
+        elif Countryselected = str"Done":
+            AskforCountry = False
+        else None
 
 france_population = 7500000  
-stability = 59 
+stability = 59
 import random
 Game = True
-Player = 1
+Player = 2
 Gamestart = True
 Keepgoing = True
 Input = str("1")
 while Game == True:
+    userCountry = Countries{Player1}
     while Keepgoing == True:
-    int(Player) = int(Player) + int(1) #Switches between Players
-    if int(Player) = int(3)
-        int(Player) = int(1)    
+        int(Player) = int(Player) + int(1) #Switches between Players
+        if int(Player) = int(3)
+            int(Player) = int(1) 
+            userCountry = Countries{Player1}
+        if int(Player) = int(2):
+            userCountry = Countries{Player2}
+        
+        Turn = 0
         if Gamestart == True:
             Input = str(1)
         Gamestart = False
@@ -361,10 +398,11 @@ while Game == True:
             
             
         ''')
-        if Input == str("1"):
+        if Input == str("1") and Turn = 0:
+            Turn = 1
             Input = input('''
 _____________________________________
-| FRANCE ({:,})  |STABILITY {}% \          >| SKIP TO NEXT DAY
+| FRANCE ({:,})  |STABILITY {}% \          >| SKIP TO NEXT DAY 
 |_____________________|_______________|
 ____________________________________________________________________________
 | MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
@@ -384,7 +422,8 @@ ____________________________________________________________________________
    |        |        |        |        |
    +--------+--------+--------+--------+                                  '''.format(france_population, stability))
 
-        if str(Input) == str("2"):
+        if Input == str("2") and Turn = 0:
+            Turn = 1
             Input = input('''
 _____________________________________
 | FRANCE ({:,})  |STABILITY {}% \          >| SKIP TO NEXT DAY
@@ -407,7 +446,8 @@ ____________________________________________________________________________
    | 0. Add New Division                                     |
    +---------------------------------------------------------+            '''.format(france_population, stability))
 
-        if str(Input) == str("3"):
+        if Input == str("3") and Turn = 0:
+            Turn = 1
             Input = input('''
 _____________________________________
 | FRANCE ({:,})  |STABILITY {}% \          >| SKIP TO NEXT DAY
@@ -430,7 +470,8 @@ ____________________________________________________________________________
    |                                                         |
    +---------------------------------------------------------+            '''.format(france_population, stability))
             
-        if str(Input) == str("4"):
+        if Input == str("4") and Turn = 0:
+            Turn = 1
             Input = input('''
 _____________________________________
 | FRANCE ({:,})  |STABILITY {}% \          >| SKIP TO NEXT DAY
@@ -455,7 +496,8 @@ ____________________________________________________________________________
    |                                                         |
    +---------------------------------------------------------+            '''.format(france_population, stability))
             
-        if str(Input) == str("5"):
+        if Input == str("5") and Turn = 0:
+            Turn = 1
             Input = input(f'''
 _____________________________________
 | {userCountry} ({userCountry.population})  |STABILITY {userCountry.stability}% \          >| SKIP TO NEXT DAY
