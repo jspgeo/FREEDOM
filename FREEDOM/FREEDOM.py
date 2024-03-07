@@ -1,17 +1,3 @@
-
-france_population = 7500000  
-stability = 59 
-
-#For All
-import random
-Hearts = True
-Defence = 50
-SoftAttack = 0
-HardAttack = 0
-Health = 0
-Playing = True
-Occupation = 5
-
 #**DIVISIONS**
 
 #INFANTRY DIVISION TYPE: (1,2,3)
@@ -78,7 +64,9 @@ Occupation = 5
 
 #MAJORS
 
-"FRA" = ["manpower_max": 45.000.000,
+
+
+FRA =   {"manpower_max": 45000000,
         "stability": 40,
         "conscription_law": 2,
         "civilian_factories": 10,
@@ -91,9 +79,9 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 200,
-        "antiair": False]
+        "antiair": False}
         
-"GER" = ["manpower_max": 80.000.000,
+GER = {"manpower_max": 80000000,
         "stability": 20,
         "conscription_law": 1,
         "civilian_factories": 20,
@@ -106,9 +94,9 @@ Occupation = 5
         "medium_tank": 700,
         "heavy_tank": 0,
         "fighters": 100,
-        "antiair": False]
+        "antiair": False}
         
-"SOV" = ["manpower_max": 170.000.000,
+SOV = {"manpower_max": 170000000,
         "stability": 15,
         "conscription_law": 1,
         "civilian_factories": 25,
@@ -121,9 +109,9 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 100,
-        "antiair": False]
+        "antiair": False}
         
-"ENG" = ["manpower_max": 50.000.000,
+ENG = {"manpower_max": 50000000,
         "stability": 60,
         "conscription_law": 1,
         "civilian_factories": 15,
@@ -136,9 +124,9 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 300,
-        "antiair": True]
+        "antiair": True}
 
-"USA" = ["manpower_max": 150.000.000,
+USA = {"manpower_max": 150000000,
         "stability": 70,
         "conscription_law": 1,
         "civilian_factories": 27,
@@ -151,9 +139,9 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 400,
-        "antiair": True]
+        "antiair": True}
         
-"ITA" = ["manpower_max": 50.000.000,
+ITA = {"manpower_max": 50000000,
         "stability": 40,
         "conscription_law": 2,
         "civilian_factories": 12,
@@ -166,9 +154,9 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 100,
-        "antiair": False]
+        "antiair": False}
         
-"JAP" = ["manpower_max": 70.000.000,
+JAP = {"manpower_max": 70000000,
         "stability": 15,
         "conscription_law": 1,
         "civilian_factories": 25,
@@ -181,9 +169,9 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 100,
-        "antiair": False]
+        "antiair": False}
         
-"CHI" = ["manpower_max": 270.000.000,
+CHI = {"manpower_max": 270000000,
         "stability": 10,
         "conscription_law": 1,
         "civilian_factories": 8,
@@ -196,11 +184,11 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 0,
-        "antiair": 0]
+        "antiair": 0}
         
 #MINORS
 
-"POL" = ["manpower_max": 35.000.000,
+POL = {"manpower_max": 35000000,
         "stability": 40,
         "conscription_law": 2,
         "civilian_factories": 7,
@@ -213,9 +201,9 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 200,
-        "antiair": False]
+        "antiair": False}
         
-"IND" = ["manpower_max": 377.000.000,
+IND = {"manpower_max": 377000000,
         "stability": 20,
         "conscription_law": 1,
         "civilian_factories": 5,
@@ -228,9 +216,9 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 100,
-        "antiair": False]
+        "antiair": False}
         
-"MEX" = ["manpower_max": 20.000.000,
+MEX = {"manpower_max": 20000000,
         "stability": 30,
         "conscription_law": 1,
         "civilian_factories": 7,
@@ -243,9 +231,9 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 100,
-        "antiair": False]
+        "antiair": False}
         
-"BRA" = ["manpower_max": 40.000.000,
+BRA = {"manpower_max": 40000000,
         "stability": 30,
         "conscription_law": 1,
         "civilian_factories": 9,
@@ -258,9 +246,9 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 300,
-        "antiair": False]
+        "antiair": False}
 
-"SWI" = ["manpower_max": 5.000.000,
+SWI = {"manpower_max": 5000000,
         "stability": 70,
         "conscription_law": 1,
         "civilian_factories": 8,
@@ -273,9 +261,9 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 0,
-        "antiair": True]
+        "antiair": True}
         
-"SPA" = ["manpower_max": 25.000.000,
+SPA = {"manpower_max": 25000000,
         "stability": 20,
         "conscription_law": 1,
         "civilian_factories": 5,
@@ -288,24 +276,68 @@ Occupation = 5
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 0,
-        "antiair": False]}
+        "antiair": False}
 
-# def Fight(Country1, Country2):
+print(r'''
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        ''')
 
-# Fight = Input("r```
+Countryselected = input('''
+                  Insert Name Here                        
+-----------------------------------------------------
+            name of people who helped idk                        
+                                                
+-----------------------------------------------------
+|                 Select a Country                  |
+-----------------------------------------------------
+|   + USA          + Germany        + Soviet Union  |  
+|   + France       + Italy          + China         |
+|   + UK           + Japan          +               |
+|                  +                +               |
+|---------------------------------------------------|
+|   + Mexico       + Poland         + Switzerland   |
+|   + Brazil       + Spain          + India         |
+-----------------------------------------------------   
+Write the country name to play that country. Ex. Player1.USA for player 1 to play with the USA.  
+                        
+Write "Info.{country}" for info about the specific nation.   
 
+Thanks for playing!                                                ''')
+if Player1 in Countryselected:
+    
+if Countryselected = str(USA)
+    userCountry = Countryselected 
 
-
-
-
-
-
+france_population = 7500000  
+stability = 59 
+import random
 Game = True
+Player = 1
 Gamestart = True
 Keepgoing = True
 Input = str("1")
 while Game == True:
     while Keepgoing == True:
+    int(Player) = int(Player) + int(1) #Switches between Players
+    if int(Player) = int(3)
+        int(Player) = int(1)    
         if Gamestart == True:
             Input = str(1)
         Gamestart = False
@@ -318,7 +350,7 @@ while Game == True:
             
             
             
-            `
+            
             
             
             
@@ -335,7 +367,7 @@ _____________________________________
 | FRANCE ({:,})  |STABILITY {}% \          >| SKIP TO NEXT DAY
 |_____________________|_______________|
 ____________________________________________________________________________
-| MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \
+| MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
 |___________|_______________|_______________|_______________|________________|
 
    +--------+--------+--------+--------+
@@ -358,7 +390,7 @@ _____________________________________
 | FRANCE ({:,})  |STABILITY {}% \          >| SKIP TO NEXT DAY
 |_____________________|_______________|
 ____________________________________________________________________________
-| MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \
+| MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
 |___________|_______________|_______________|_______________|________________|
 
    +---------------------------------------------------------+
@@ -381,7 +413,7 @@ _____________________________________
 | FRANCE ({:,})  |STABILITY {}% \          >| SKIP TO NEXT DAY
 |_____________________|_______________|
 ____________________________________________________________________________
-| MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \
+| MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
 |___________|_______________|_______________|_______________|________________|
 
    +---------------------------------------------------------+
@@ -404,7 +436,7 @@ _____________________________________
 | FRANCE ({:,})  |STABILITY {}% \          >| SKIP TO NEXT DAY
 |_____________________|_______________|
 ____________________________________________________________________________
-| MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \
+| MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
 |___________|_______________|_______________|_______________|________________|
 
    +---------------------------------------------------------+
@@ -426,10 +458,10 @@ ____________________________________________________________________________
         if str(Input) == str("5"):
             Input = input(f'''
 _____________________________________
-| {userCountry} ({population})  |STABILITY {stability}% \          >| SKIP TO NEXT DAY
+| {userCountry} ({userCountry.population})  |STABILITY {userCountry.stability}% \          >| SKIP TO NEXT DAY
 |_____________________|_______________|
 ____________________________________________________________________________
-| MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \
+| MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
 |___________|_______________|_______________|_______________|________________|
 
    +---------------------------------------------------------+
@@ -437,7 +469,7 @@ ____________________________________________________________________________
    +---------------------------------------------------------+
    | SHOW NATIONAL SPIRIT FOR COUNTRY HERE                   |
    |                                                         |
-   | DECISION TO REMOVE                                      |
+   | DECISION TO REMOVE:                                      |
    | COST OF REMOVING:                                       |
    |                                                         |
    | OTHER DECISIONS:                                        |
