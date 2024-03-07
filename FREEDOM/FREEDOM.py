@@ -367,7 +367,6 @@ while Game == True:
         if int(Player) = int(2):
             userCountry = Countries{Player2}
         
-        Turn = 0
         if Gamestart == True:
             Input = str(1)
         Gamestart = False
@@ -391,11 +390,11 @@ while Game == True:
             
             
         ''')
-        if Input == str("1") and Turn = 0:
-            Turn = 1
+        if Input == str("1"):
+            Menu_on = 1
             Input = input('''
 _____________________________________
-| FRANCE ({:,})  |STABILITY {}% \          >| SKIP TO NEXT DAY 
+| FRANCE ({:,})  |STABILITY {}% \          >| NEXT PLAYER 
 |_____________________|_______________|
 ____________________________________________________________________________
 | MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
@@ -415,11 +414,11 @@ ____________________________________________________________________________
    |        |        |        |        |
    +--------+--------+--------+--------+                                  '''.format(france_population, stability))
 
-        if Input == str("2") and Turn = 0:
-            Turn = 1
+        if Input == str("2"):
+            Menu_on = 2
             Input = input('''
 _____________________________________
-| FRANCE ({:,})  |STABILITY {}% \          >| SKIP TO NEXT DAY
+| FRANCE ({:,})  |STABILITY {}% \          >| NEXT PLAYER 
 |_____________________|_______________|
 ____________________________________________________________________________
 | MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
@@ -436,14 +435,14 @@ ____________________________________________________________________________
    | 4. Division 4                9. Division 9              |
    | 5. Division 5                0. Division 10             |
    |                                                         |
-   | 0. Add New Division                                     |
+   |  Add a division with '0'. Delete a division with '9'.   |
    +---------------------------------------------------------+            '''.format(france_population, stability))
 
-        if Input == str("3") and Turn = 0:
-            Turn = 1
+        if Input == str("3"):
+            Menu_on = 3
             Input = input('''
 _____________________________________
-| FRANCE ({:,})  |STABILITY {}% \          >| SKIP TO NEXT DAY
+| FRANCE ({:,})  |STABILITY {}% \          >| NEXT PLAYER 
 |_____________________|_______________|
 ____________________________________________________________________________
 | MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
@@ -463,11 +462,11 @@ ____________________________________________________________________________
    |                                                         |
    +---------------------------------------------------------+            '''.format(france_population, stability))
             
-        if Input == str("4") and Turn = 0:
-            Turn = 1
+        if Input == str("4"):
+            Menu_on = 4
             Input = input('''
 _____________________________________
-| FRANCE ({:,})  |STABILITY {}% \          >| SKIP TO NEXT DAY
+| FRANCE ({:,})  |STABILITY {}% \          >| NEXT PLAYER 
 |_____________________|_______________|
 ____________________________________________________________________________
 | MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
@@ -483,17 +482,17 @@ ____________________________________________________________________________
    |                                                         |
    | CURRENT FACTORY/IES BEING PRODUCED: {} (CIV/MIL)        |
    | RATE OF FACTORIES BEING MADE: {}                        |                       
-   | CHANGE FACTORY PRODUCTION LINE (0)                      |
-   |                                                         |
-   | Anti-Air: 100 units                                     |
+   | FACTORY OUTPUT MENU (0)                                 |
    |                                                         |
    +---------------------------------------------------------+            '''.format(france_population, stability))
+   if Input = str"0":
+       Turn = Turn - 1 
             
-        if Input == str("5") and Turn = 0:
-            Turn = 1
+        if Input == str("5")
+            Menu_on = 5
             Input = input(f'''
 _____________________________________
-| {userCountry} ({userCountry.population})  |STABILITY {userCountry.stability}% \          >| SKIP TO NEXT DAY
+| {userCountry} ({userCountry.population})  |STABILITY {userCountry.stability}% \          >| NEXT PLAYER 
 |_____________________|_______________|
 ____________________________________________________________________________
 | MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
@@ -514,4 +513,53 @@ ____________________________________________________________________________
    | WAR ECONOMY                                             |
    | INFRASTRUCTURE                                          |
    | SAFE WORKPLACE                                          |
+   +---------------------------------------------------------+            '''.format(france_population, stability))
+
+        if Input == str("0") and Menu_on = 4:
+            Menu_on = 6
+            Input = input('''
+_____________________________
+| {userCountry} ({userCountry.population})  |STABILITY {userCountry.stability}% \          >| NEXT PLAYER 
+|_____________________|_______________|
+____________________________________________________________________________
+| MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
+|___________|_______________|_______________|_______________|________________|
+
+   +---------------------------------------------------------+
+   |                     FACTORY OUTPUT                      |
+   +----------------------------+----------------------------+
+   | INFANTRY EQUIPMENT         |  0/16 Factories            |  
+   | ARTILLERY EQUIPMENT        |  0/16 Factories            |
+   | SUPPORT EQUIPMENT          |  0/16 Factories            |
+   | ANTIAIR EQUIPMENT          |  0/16 Factories            |             
+   | FIGHTER PLANES             |  0/16 Factories            |                     
+   |                            |                            |
+   | LIGHT TANKS                |  0/16 Factories            |
+   | MEDIUM TANKS               |  0/16 Factories            |
+   | HEAVY TANKS                |  0/16 Factories            |                       
+   +---------------------------------------------------------+            '''.format(france_population, stability))
+           
+        if Input == str("0") and Menu_on = 2:
+            Menu_on = 7
+            Input = input('''
+_____________________________________
+| {userCountry} ({userCountry.population})  |STABILITY {userCountry.stability}% \          >| NEXT PLAYER 
+|_____________________|_______________|
+____________________________________________________________________________
+| MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
+|___________|_______________|_______________|_______________|________________|
+
+   +---------------------------------------------------------+
+   |                       NEW DIVISION                      |
+   +----------------------------+----------------------------+
+   | LIGHT INFANTRY DIVISION    | CREATE: (LI)               |  
+   | MEDIUM INFANTRY DIVISION   | CREATE: (MI)               | 
+   | HEAVY INFANTRY DIVISION    | CREATE: (HI)               | 
+   |                            |                            |       
+   | LIGHT TANK DIVISION        | CREATE: (LT)               |                   
+   | MEDIUM TANK DIVISION       | CREATE: (MT)               | 
+   | HEAVY TANK DIVISION        | CREATE: (HT)               | 
+   |                            |                            |                         
+   +----------------------------+----------------------------+
+   | DEPLOY IN CERTAIN REGION, USE (DV).(POSITION) e.g LI.A4 |                   
    +---------------------------------------------------------+            '''.format(france_population, stability))
