@@ -1,3 +1,7 @@
+import random
+import select
+import csinsc
+
 #**DIVISIONS**
 
 #INFANTRY DIVISION TYPE: (1,2,3)
@@ -5,16 +9,10 @@
 #2: MEDIUM INFANTRY DIVISION (6000MP, 30SUP, 50ART, 840INFA)
 #3: HEAVY INFANTRY DIVISION (12000MP, 70SUP, 100ART, 2000INFA)
 
-#INFANTRY DIVISIONS COUNT: (NUM)
-#ANTIAIR IN DIVISIONS (TRUE/FALSE) #10% LESS ATTACK, 30 IN EACH DIV
-
 #TANK DIVISION TYPE: (1,2,3)
 #1: LIGHT TANK DIVISION (10000MP, 100SUP, 100ART, 300LTE)
 #2: MEDIUM TANK DIVISION (10000MP, 200SUP, 200ART, 300MTE)
 #3: HEAVY TANK DIVISION (10000MP, 700SUP, 400ART, 300HTE)
-
-#TANK DIVISIONS COUNT: (NUM)
-#ANTIAIR IN DIVISIONS (TRUE/FALSE) #10% LESS ATTACK, 500 IN EACH DIV
 
 #**EQUIPMENT**
 
@@ -26,9 +24,9 @@
 #LIGHT TANK EQUIPMENT (NUM)
 #MEDIUM TANK EQUIPMENT (NUM)
 #HEAVY TANK EQUIPMENT (NUM)
-#FIGHTERS EQUIPMENT (NUM)
-#ANTIAIR EQUIPMENT (NUM)
-#PORT GUARDS (TRUE/FALSE)
+#FIGHTERS EQUIPMENT (NUM) - ASSIST IN EVERY BATTLE, IF You HAVE MORE FIGHTERS YOU GET 10% ADVANTAGE
+#ANTIAIR EQUIPMENT (NUM) - ASSIST IN EVERY BATTLE, IF ANTIAIR > FIGHTERS FROM OTHER TEAM, THEIR FIGHTERS INFLICT NO DAMAGE
+#PORT GUARDS (TRUE/FALSE) - PORT GUARDS ASSIST IN BATTLES IN THE CORNERS OF THE MAP. DEFENCE +10
 
 #**FACTORIES**
 
@@ -63,8 +61,6 @@
 #14 REPUBLICAN UNREST
 
 #MAJORS
-
-
 
 FRA =   {"manpower_max": 45000000,
         "stability": 40,
@@ -296,7 +292,7 @@ DUT = {"manpower_max": 80000000,
 BLANK = NOCOUNTRY
 
 Countries = {"Player1": BLANK,
-             "Player2": DUT}
+             "Player2": DUT)}
 
 print(r'''
             
@@ -321,10 +317,10 @@ print(r'''
 AskforCountry = True
 while AskforCountry == True:
     Countryselected = input(f'''
-                  Insert Name Here                        
+       I Shall Return (temporary name for game)                        
 -----------------------------------------------------
-            name of people who helped idk                        
-                                                
+             Created by: James Spaven 
+          Contributors: Mitchell Kennedy                 
 -----------------------------------------------------
 |                 Select a Country                  |
 -----------------------------------------------------
@@ -340,7 +336,7 @@ while AskforCountry == True:
 |   + Player 2: Countries{Player2}                  |
 -----------------------------------------------------                          
 Write the country name to play that country. Ex. Player1.USA for player 1 to play with the USA.  
-Write "Info.country" for info about the specific nation.                                                 ''')
+Write "Info.country" for info about the specific nation. DUT = the Dutch Empire (Always AI, cannot be selected for a human player.)           ''')
     def FRA(), GER(), SOV(), ENG(), USA(), ITA(), JAP(), CHI(), POL(), IND(), MEX(), BRA(), SWI(), SPA(), DUT():
         OtherPlayer = DUT
         if str(Player1) in Countryselected:
@@ -356,9 +352,6 @@ Write "Info.country" for info about the specific nation.                        
             AskforCountry = False
         else None
 
-france_population = 7500000  
-stability = 59
-import random
 Game = True
 Player = 2
 Gamestart = True
@@ -522,5 +515,3 @@ ____________________________________________________________________________
    | INFRASTRUCTURE                                          |
    | SAFE WORKPLACE                                          |
    +---------------------------------------------------------+            '''.format(france_population, stability))
-
-
