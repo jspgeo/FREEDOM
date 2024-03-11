@@ -1,6 +1,4 @@
 import random
-import select
-import csinsc
 
 #**DIVISIONS**
 
@@ -60,9 +58,11 @@ import csinsc
 #13 MOUNTAIN COUNTRY
 #14 REPUBLICAN UNREST
 
-#MAJORS
+#TEMPLATES FOR EACH COUNTRY
 
-FRA =   {"manpower_max": 45000000,
+country = {
+    "FRA": {
+        "manpower_max": 45000000,
         "stability": 40,
         "conscription_law": 2,
         "civilian_factories": 10,
@@ -75,9 +75,22 @@ FRA =   {"manpower_max": 45000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 200,
-        "antiair": False}
-        
-GER = {"manpower_max": 80000000,
+        "antiair": False,
+        "minorcountry": False,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "GER": {
+        "manpower_max": 80000000,
         "stability": 20,
         "conscription_law": 1,
         "civilian_factories": 20,
@@ -90,9 +103,22 @@ GER = {"manpower_max": 80000000,
         "medium_tank": 700,
         "heavy_tank": 0,
         "fighters": 100,
-        "antiair": False}
-        
-SOV = {"manpower_max": 170000000,
+        "antiair": False,
+        "minorcountry": False,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "SOV": {
+        "manpower_max": 170000000,
         "stability": 15,
         "conscription_law": 1,
         "civilian_factories": 25,
@@ -105,9 +131,22 @@ SOV = {"manpower_max": 170000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 100,
-        "antiair": False}
-        
-ENG = {"manpower_max": 50000000,
+        "antiair": False,
+        "minorcountry": False,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "ENG": {
+        "manpower_max": 50000000,
         "stability": 60,
         "conscription_law": 1,
         "civilian_factories": 15,
@@ -120,9 +159,22 @@ ENG = {"manpower_max": 50000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 300,
-        "antiair": True}
-
-USA = {"manpower_max": 150000000,
+        "antiair": True,
+        "minorcountry": False,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "USA": {
+        "manpower_max": 150000000,
         "stability": 70,
         "conscription_law": 1,
         "civilian_factories": 27,
@@ -135,9 +187,22 @@ USA = {"manpower_max": 150000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 400,
-        "antiair": True}
-        
-ITA = {"manpower_max": 50000000,
+        "antiair": True,
+        "minorcountry": False,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "ITA": {
+        "manpower_max": 50000000,
         "stability": 40,
         "conscription_law": 2,
         "civilian_factories": 12,
@@ -150,9 +215,22 @@ ITA = {"manpower_max": 50000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 100,
-        "antiair": False}
-        
-JAP = {"manpower_max": 70000000,
+        "antiair": False,
+        "minorcountry": False,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "JAP": {
+        "manpower_max": 70000000,
         "stability": 15,
         "conscription_law": 1,
         "civilian_factories": 25,
@@ -165,9 +243,22 @@ JAP = {"manpower_max": 70000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 100,
-        "antiair": False}
-        
-CHI = {"manpower_max": 270000000,
+        "antiair": False,
+        "minorcountry": False,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "CHI": {
+        "manpower_max": 270000000,
         "stability": 10,
         "conscription_law": 1,
         "civilian_factories": 8,
@@ -180,11 +271,22 @@ CHI = {"manpower_max": 270000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 0,
-        "antiair": 0}
-        
-#MINORS
-
-POL = {"manpower_max": 35000000,
+        "antiair": False,
+        "minorcountry": False,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "POL": {
+        "manpower_max": 35000000,
         "stability": 40,
         "conscription_law": 2,
         "civilian_factories": 7,
@@ -197,9 +299,22 @@ POL = {"manpower_max": 35000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 200,
-        "antiair": False}
-        
-IND = {"manpower_max": 377000000,
+        "antiair": False,
+        "minorcountry": True,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "IND": {
+        "manpower_max": 377000000,
         "stability": 20,
         "conscription_law": 1,
         "civilian_factories": 5,
@@ -212,9 +327,22 @@ IND = {"manpower_max": 377000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 100,
-        "antiair": False}
-        
-MEX = {"manpower_max": 20000000,
+        "antiair": False,
+        "minorcountry": True,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "MEX": {
+        "manpower_max": 20000000,
         "stability": 30,
         "conscription_law": 1,
         "civilian_factories": 7,
@@ -227,9 +355,22 @@ MEX = {"manpower_max": 20000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 100,
-        "antiair": False}
-        
-BRA = {"manpower_max": 40000000,
+        "antiair": False,
+        "minorcountry": True,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "BRA": {
+        "manpower_max": 40000000,
         "stability": 30,
         "conscription_law": 1,
         "civilian_factories": 9,
@@ -242,9 +383,22 @@ BRA = {"manpower_max": 40000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 300,
-        "antiair": False}
-
-SWI = {"manpower_max": 5000000,
+        "antiair": False,
+        "minorcountry": True,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "SWI": {
+        "manpower_max": 5000000,
         "stability": 70,
         "conscription_law": 1,
         "civilian_factories": 8,
@@ -257,9 +411,22 @@ SWI = {"manpower_max": 5000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 0,
-        "antiair": True}
-        
-SPA = {"manpower_max": 25000000,
+        "antiair": False,
+        "minorcountry": True,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "SPA": {
+        "manpower_max": 25000000,
         "stability": 20,
         "conscription_law": 1,
         "civilian_factories": 5,
@@ -272,9 +439,22 @@ SPA = {"manpower_max": 25000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 0,
-        "antiair": False}
-
-DUT = {"manpower_max": 80000000,
+        "antiair": False,
+        "minorcountry": True,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    },
+    
+    "DUT": {
+        "manpower_max": 80000000,
         "stability": 50,
         "conscription_law": 1,
         "civilian_factories": 6,
@@ -287,12 +467,84 @@ DUT = {"manpower_max": 80000000,
         "medium_tank": 0,
         "heavy_tank": 0,
         "fighters": 100,
-        "antiair": False}
+        "antiair": False,
+        "minorcountry": True,
+        "division1": {"type": "infantry", "division_type": "light"},
+        "division2": {"type": "infantry", "division_type": "medium"},
+        "division3": {"type": "infantry", "division_type": "heavy"},
+        "division4": {"type": "tank", "division_type": "light"},
+        "division5": {"type": "tank", "division_type": "medium"},
+        "division6": {"type": "tank", "division_type": "heavy"},
+        "division7": {"type": "", "division_type": ""},
+        "division8": {"type": "", "division_type": ""},
+        "division9": {"type": "", "division_type": ""},
+        "division10": {"type": "", "division_type": ""}
+    }
+}
 
-BLANK = NOCOUNTRY
+#INDIVIDUAL PLAYERS STATS
 
-Countries = {"Player1": BLANK,
-             "Player2": DUT)}
+SelectedNation = {
+    "Player 1": {
+        "nation": "GER",
+        "manpower_max": 80000000,
+        "stability": 20,
+        "conscription_law": 1,
+        "civilian_factories": 20,
+        "military_factories": 3,
+        "port_guards": False,
+        "support": 150,
+        "artillery": 500,
+        "infantry": 15000,
+        "light_tank": 0,
+        "medium_tank": 700,
+        "heavy_tank": 0,
+        "fighters": 100,
+        "antiair": False,
+        "minorcountry": False,
+        "division1": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division2": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division3": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division4": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division5": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division6": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division7": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division8": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division9": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division10": {"type": "", "division_type": "", "logistics_fulfilled": 100}
+    },
+    
+    "Player 2": {
+        "nation": "DUT",
+        "manpower_max": 80000000,
+        "stability": 50,
+        "conscription_law": 1,
+        "civilian_factories": 6,
+        "military_factories": 4,
+        "port_guards": True,
+        "support": 500,
+        "artillery": 500,
+        "infantry": 10000,
+        "light_tank": 0,
+        "medium_tank": 0,
+        "heavy_tank": 0,
+        "fighters": 100,
+        "antiair": False,
+        "minorcountry": True,
+        "division1": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division2": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division3": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division4": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division5": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division6": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division7": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division8": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division9": {"type": "", "division_type": "", "logistics_fulfilled": 100},
+        "division10": {"type": "", "division_type": "", "logistics_fulfilled": 100}
+    }
+}
+
+Player1Divs = {}
 
 print(r'''
             
@@ -308,7 +560,7 @@ print(r'''
             
             
             
-            
+            # ADD HOW TO PLAY AND WHERE TROOPS START
             
             
             
@@ -317,7 +569,7 @@ print(r'''
 AskforCountry = True
 while AskforCountry == True:
     Countryselected = input(f'''
-       I Shall Return (temporary name for game)                        
+       Fortnite Battle pass: THE GAME!!!!!!!!!!!                        
 -----------------------------------------------------
              Created by: James Spaven 
           Contributors: Mitchell Kennedy                 
@@ -332,25 +584,77 @@ while AskforCountry == True:
 |   + Mexico       + Poland         + Switzerland   |
 |   + Brazil       + Spain          + India         |  
 |---------------------------------------------------|
-|   + Player 1: Countries{Player1}                  |
-|   + Player 2: Countries{Player2}                  |
+|   + Player 1: {SelectedNation["Player 1"]}                  |
+|   + Player 2: {SelectedNation["Player 2"]}                  |
 -----------------------------------------------------                          
-Write the country name to play that country. Ex. Player1.USA for player 1 to play with the USA.  
+Write the country name to play that country. Ex. Player1.USA for player 1 to play with the USA. Enter '?' For help.
 Write "Info.country" for info about the specific nation. DUT = the Dutch Empire (Always AI, cannot be selected for a human player.)           ''')
-    def FRA(), GER(), SOV(), ENG(), USA(), ITA(), JAP(), CHI(), POL(), IND(), MEX(), BRA(), SWI(), SPA(), DUT():
-        OtherPlayer = DUT
-        if str(Player1) in Countryselected:
-            if str(Countryselected) - str(Player1) = str(FRA) or str(GER) or str(SOV) or str(ENG) or str(USA) or str(ITA) or str(JAP) or str(CHI) or str(POL) or str(IND) or str(MEX) or str(BRA) or str(SWI) or str(SPA)
-                Countries{Player1} = str(Countryselected) - str(Player1)
-        elif str(Player2) in Countryselected:
-            if str(Countryselected) - str(Player1) = str(FRA) or str(GER) or str(SOV) or str(ENG) or str(USA) or str(ITA) or str(JAP) or str(CHI) or str(POL) or str(IND) or str(MEX) or str(BRA) or str(SWI) or str(SPA)
-                Countries{Player1} = str(Countryselected) - str(Player2)
-        elif Countryselected = str(FRA) or str(GER) or str(SOV) or str(ENG) or str(USA) or str(ITA) or str(JAP) or str(CHI) or str(POL) or str(IND) or str(MEX) or str(BRA) or str(SWI) or str(SPA):
-            if str(Countryselected) - str(Player1) = str(FRA) or str(GER) or str(SOV) or str(ENG) or str(USA) or str(ITA) or str(JAP) or str(CHI) or str(POL) or str(IND) or str(MEX) or str(BRA) or str(SWI) or str(SPA)
-                Countries{Player1} = str(Countryselected) - str(Player1)
-        elif Countryselected = str"Done":
-            AskforCountry = False
-        else None
+    #ex. works: player1.GER turns 1st country to ger, player2.FRA turns second country to france
+    if any(country in Countryselected for country in ["FRA", "GER", "SOV", "ENG", "USA", "ITA", "JAP", "CHI", "POL", "IND", "MEX", "BRA", "SWI", "SPA"]) and ("player1" in Countryselected or "player2" in Countryselected):
+        if "player1." in Countryselected or "player2." in Countryselected:
+            if "player1" in Countryselected:
+                country_code = Countryselected.split(".")[1]
+                if country_code in country:
+                    SelectedNation["Player 1"] = country_code
+                else:
+                    print("Country code not found.")
+            elif "player2" in Countryselected:
+                country_code = Countryselected.split(".")[1]
+                if country_code in country:
+                    SelectedNation["Player 2"] = country_code
+                else:
+                    print("Country code not found.")
+            else:
+               print("Invalid input format.")
+    if str("?") in Countryselected:
+        print(r'''
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            ''')
+        Countryselected = input(f'''
+       I Shall Return (temporary name for game)                        
+-----------------------------------------------------
+             Created by: James Spaven 
+          Contributors: Mitchell Kennedy                 
+-----------------------------------------------------
+|                       Help                        |
+-----------------------------------------------------
+| How it works:                                     |  
+|  Select a country, and defeat your enemy before   |
+|  they defeat you! Use different types of troops   |
+|  and decisions to help you win your conflicts!    |
+|---------------------------------------------------|
+| Each Country has different statistics to find.    |
+| Decisions change stability and is for balancing.  |  
+| Your troops need equipment if they are to work.   |
+| If they run out, they disappear from combat.      |
+| Factories decide amount of the equipment you got. |
+-----------------------------------------------------  
+| High stability, higher happiness and willingness  |
+| for the war and more manpower (People in troops)! |                            
+|---------------------------------------------------|                            ''')
+     
+            # Detect which country they are talking about
+            # Give the country to the player selected
+            # if no player selected it gives to first player and stops asking for country, other is bot
+        
+      
 
 Game = True
 Player = 2
@@ -358,14 +662,14 @@ Gamestart = True
 Keepgoing = True
 Input = str("1")
 while Game == True:
-    userCountry = Countries{Player1}
+    userCountry = SelectedNation["Player 1"]
     while Keepgoing == True:
-        int(Player) = int(Player) + int(1) #Switches between Players
-        if int(Player) = int(3)
-            int(Player) = int(1) 
-            userCountry = Countries{Player1}
-        if int(Player) = int(2):
-            userCountry = Countries{Player2}
+        Player = int(Player) + int(1) #Switches between Players
+        if Player == int(3):
+            Player = 1
+            userCountry = SelectedNation["Player 1"]
+        if Player == int(2):
+            userCountry = SelectedNation["Player 2"]
         
         if Gamestart == True:
             Input = str(1)
@@ -485,10 +789,10 @@ ____________________________________________________________________________
    | FACTORY OUTPUT MENU (0)                                 |
    |                                                         |
    +---------------------------------------------------------+            '''.format(france_population, stability))
-   if Input = str"0":
-       Turn = Turn - 1 
+        if Input == str("0"):
+            Turn = Turn - 1 
             
-        if Input == str("5")
+        if Input == str("5"):
             Menu_on = 5
             Input = input(f'''
 _____________________________________
@@ -515,7 +819,7 @@ ____________________________________________________________________________
    | SAFE WORKPLACE                                          |
    +---------------------------------------------------------+            '''.format(france_population, stability))
 
-        if Input == str("0") and Menu_on = 4:
+        if Input == str("0") and Menu_on == 4:
             Menu_on = 6
             Input = input('''
 _____________________________
@@ -539,7 +843,7 @@ ____________________________________________________________________________
    | HEAVY TANKS                |  0/16 Factories            |                       
    +---------------------------------------------------------+            '''.format(france_population, stability))
            
-        if Input == str("0") and Menu_on = 2:
+        if Input == str("0") and Menu_on == 2:
             Menu_on = 7
             Input = input('''
 _____________________________________
@@ -549,17 +853,18 @@ ____________________________________________________________________________
 | MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
 |___________|_______________|_______________|_______________|________________|
 
-   +---------------------------------------------------------+
-   |                       NEW DIVISION                      |
-   +----------------------------+----------------------------+
-   | LIGHT INFANTRY DIVISION    | CREATE: (LI)               |  
-   | MEDIUM INFANTRY DIVISION   | CREATE: (MI)               | 
-   | HEAVY INFANTRY DIVISION    | CREATE: (HI)               | 
-   |                            |                            |       
-   | LIGHT TANK DIVISION        | CREATE: (LT)               |                   
-   | MEDIUM TANK DIVISION       | CREATE: (MT)               | 
-   | HEAVY TANK DIVISION        | CREATE: (HT)               | 
-   |                            |                            |                         
-   +----------------------------+----------------------------+
-   | DEPLOY IN CERTAIN REGION, USE (DV).(POSITION) e.g LI.A4 |                   
-   +---------------------------------------------------------+            '''.format(france_population, stability))
+       A        B        C        D       +---------------------------------------------------------+
+   +--------+--------+--------+--------+  |                       NEW DIVISION                      |
+ 1 |  FRA   |  FRA   |  GER   |  GER   |  +----------------------------+----------------------------+
+   |        |        |        |        |  |                            |                            |
+   +--------+--------+--------+--------+  | LIGHT INFANTRY DIVISION    | CREATE: (LI)               |  
+ 2 |  FRA   |  FRA   |  GER   |  GER   |  | MEDIUM INFANTRY DIVISION   | CREATE: (MI)               | 
+   |        |        |        |        |  | HEAVY INFANTRY DIVISION    | CREATE: (HI)               | 
+   +--------+--------+--------+--------+  |                            |                            |       
+ 3 |  FRA   |  FRA   |  GER   |  GER   |  | LIGHT TANK DIVISION        | CREATE: (LT)               |                   
+   |        |        |        |        |  | MEDIUM TANK DIVISION       | CREATE: (MT)               | 
+   +--------+--------+--------+--------+  | HEAVY TANK DIVISION        | CREATE: (HT)               | 
+ 4 |  FRA   |  FRA   |  GER   |  GER   |  |                            |                            |                         
+   |        |        |        |        |  +----------------------------+----------------------------+
+   +--------+--------+--------+--------+  | DEPLOY IN CERTAIN REGION, USE (DV).(POSITION) e.g LI.A4 |                   
+                                          +---------------------------------------------------------+            '''.format(france_population, stability))
