@@ -1,5 +1,13 @@
 import random
 
+#ADD IT SO THE COUNTRY GETS ALL THE THINGS THE TEMPLATE COUNTRY HAS, INCLUDING THEIR SPIRITS 
+#LOGISTICS CHANGE DEPENDING ON HOW MUCH EQUIPMENT
+#CHANGE PLAYER MECHANIC
+#ATTACK MECHANIC
+#GAIN EQUIPMENT MECHANIC
+#BATTLE MECHANIC
+#INFO ABOUT EACH COUNTRY
+
 #**DIVISIONS**
 
 #INFANTRY DIVISION TYPE: (1,2,3)
@@ -488,6 +496,7 @@ SelectedNation = {
     "Player 1": {
         "nation": "GER",
         "manpower_max": 80000000,
+        "national_spirits": "Example Spirit"
         "stability": 20,
         "conscription_law": 1,
         "civilian_factories": 20,
@@ -517,6 +526,7 @@ SelectedNation = {
     "Player 2": {
         "nation": "DUT",
         "manpower_max": 80000000,
+        "national_spirits": "Example Spirit"
         "stability": 50,
         "conscription_law": 1,
         "civilian_factories": 6,
@@ -560,7 +570,7 @@ print(r'''
             
             
             
-            # ADD HOW TO PLAY AND WHERE TROOPS START
+            
             
             
             
@@ -584,24 +594,24 @@ while AskforCountry == True:
 |   + Mexico       + Poland         + Switzerland   |
 |   + Brazil       + Spain          + India         |  
 |---------------------------------------------------|
-|   + Player 1: {SelectedNation["Player 1"]}                  |
-|   + Player 2: {SelectedNation["Player 2"]}                  |
+|   + Player 1: {SelectedNation["Player 1"]["nation"]}                  |
+|   + Player 2: {SelectedNation["Player 2"]["nation"]}                  |
 -----------------------------------------------------                          
-Write the country name to play that country. Ex. Player1.USA for player 1 to play with the USA. Enter '?' For help.
-Write "Info.country" for info about the specific nation. DUT = the Dutch Empire (Always AI, cannot be selected for a human player.)           ''')
+Write the country name to play that country. DUT (The Netherlands) is a bot and is default. 
+Example selection: player1.USA, player2.FRA   Enter '?' for help. Enter 'Start' to start. Enter Info.country for info about a country. Enter Bot.COUNTRY to make Player 2 a bot of your choosing. ''')
     #ex. works: player1.GER turns 1st country to ger, player2.FRA turns second country to france
     if any(country in Countryselected for country in ["FRA", "GER", "SOV", "ENG", "USA", "ITA", "JAP", "CHI", "POL", "IND", "MEX", "BRA", "SWI", "SPA"]) and ("player1" in Countryselected or "player2" in Countryselected):
         if "player1." in Countryselected or "player2." in Countryselected:
             if "player1" in Countryselected:
                 country_code = Countryselected.split(".")[1]
                 if country_code in country:
-                    SelectedNation["Player 1"] = country_code
+                    SelectedNation["Player 1"]["nation"] = country_code
                 else:
                     print("Country code not found.")
             elif "player2" in Countryselected:
                 country_code = Countryselected.split(".")[1]
                 if country_code in country:
-                    SelectedNation["Player 2"] = country_code
+                    SelectedNation["Player 2"]["nation"] = country_code
                 else:
                     print("Country code not found.")
             else:
@@ -650,11 +660,9 @@ Write "Info.country" for info about the specific nation. DUT = the Dutch Empire 
 | for the war and more manpower (People in troops)! |                            
 |---------------------------------------------------|                            ''')
      
-            # Detect which country they are talking about
-            # Give the country to the player selected
-            # if no player selected it gives to first player and stops asking for country, other is bot
-        
-      
+    if str("Start") in Countryselected:  
+        AskforCountry = False
+    
 
 Game = True
 Player = 2
@@ -891,6 +899,6 @@ ____________________________________________________________________________
    |        |        |        |        |  |   7   |   MED TANK         |     A4     | DIV(7).DELETE |
    +--------+--------+--------+--------+  |   8   |   MED TANK         |     A4     | DIV(8).DELETE |
  4 |  FRA   |  FRA   |  GER   |  GER   |  |   9   |   MED TANK         |     A4     | DIV(9).DELETE |
-   |        |        |        |        |  |  10   |   MED TANK         |     A4     |DIV(10).DELETE |
+   |        |        |        |        |  |  10   |   MED TANK         |     A4     | DIV(0).DELETE |
    +--------+--------+--------+--------+  |       |                    |            |               |
                                           +-------+--------------------+------------+---------------+          '''.format(france_population, stability))
