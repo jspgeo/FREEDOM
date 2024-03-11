@@ -868,3 +868,29 @@ ____________________________________________________________________________
    |        |        |        |        |  +----------------------------+----------------------------+
    +--------+--------+--------+--------+  | DEPLOY IN CERTAIN REGION, USE (DV).(POSITION) e.g LI.A4 |                   
                                           +---------------------------------------------------------+            '''.format(france_population, stability))
+          
+        if Input == str("7") and Menu_on == 2:
+            Menu_on = 7
+            Input = input('''
+_____________________________________
+| {userCountry} ({userCountry.population})  |STABILITY {userCountry.stability}% \          >| NEXT PLAYER 
+|_____________________|_______________|
+____________________________________________________________________________
+| MAPS (1) \ DIVISIONS (2) \ EQUIPMENT (3) \ FACTORIES (4) \ GOVERNMENT (5) \\
+|___________|_______________|_______________|_______________|________________|
+                          
+       A        B        C        D       +---------------------------------------------------------+
+   +--------+--------+--------+--------+  |  DIV  |    TYPE OF DIV     |  POSITION  | CMD TO DELETE |
+ 1 |  FRA   |  FRA   |  GER   |  GER   |  +-------+--------------------+------------+---------------+
+   |        |        |        |        |  |   1   |   MEDIUM INFANTRY  |     A4     | DIV(1).DELETE |
+   +--------+--------+--------+--------+  |   2   |   HVY INFANTRY     |     A4     | DIV(2).DELETE |
+ 2 |  FRA   |  FRA   |  GER   |  GER   |  |   3   |   LT TANK          |     A4     | DIV(3).DELETE |
+   |        |        |        |        |  |   4   |   MED TANK         |     A4     | DIV(4).DELETE |
+   +--------+--------+--------+--------+  |   5   |   HVY TANK         |     A4     | DIV(5).DELETE |
+ 3 |  FRA   |  FRA   |  GER   |  GER   |  |   6   |   MED TANK         |     A4     | DIV(6).DELETE |
+   |        |        |        |        |  |   7   |   MED TANK         |     A4     | DIV(7).DELETE |
+   +--------+--------+--------+--------+  |   8   |   MED TANK         |     A4     | DIV(8).DELETE |
+ 4 |  FRA   |  FRA   |  GER   |  GER   |  |   9   |   MED TANK         |     A4     | DIV(9).DELETE |
+   |        |        |        |        |  |  10   |   MED TANK         |     A4     |DIV(10).DELETE |
+   +--------+--------+--------+--------+  |       |                    |            |               |
+                                          +-------+--------------------+------------+---------------+          '''.format(france_population, stability))
